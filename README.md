@@ -44,27 +44,27 @@ public class FragmentExample extends JACSBaseFragment {
 
  The JACSFragment will handle creating the ViewModel of the given class and set up the data binding for your view. You will now be able to access your ViewModel with the variable 'viewModel'.
  
- ### Fragment With ViewModel Example
- ```java
- public class FragmentExample extends JACSBaseFragment<FragmentExampleBinding, FragmentExampleViewModel> {
+### Fragment With ViewModel Example
+```java
+public class FragmentExample extends JACSBaseFragment<FragmentExampleBinding, FragmentExampleViewModel> {
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        layoutID = R.layout.example_layout;
+   @Override
+   public void onCreate(@Nullable Bundle savedInstanceState) {
+       super.onCreate(savedInstanceState);
+       layoutID = R.layout.example_layout;
         
-        // Must set the class for this views ViewModel
-        viewModelClass = FragmentExampleViewModel.class;
-    }
+       // Must set the class for this views ViewModel
+       viewModelClass = FragmentExampleViewModel.class;
+   }
 
-    @Override
-    protected void setupViews() {
-        // Binding is automatically cast to the correct type
-        // viewModel is also automatically cast to the correct type
-        viewBinding.setExampleViewModel(viewModel);
+   @Override
+   protected void setupViews() {
+       // Binding is automatically cast to the correct type
+       // viewModel is also automatically cast to the correct type
+       viewBinding.setExampleViewModel(viewModel);
         
-    }
-}
+   }
+ }
  ```
  
  
@@ -73,17 +73,17 @@ public class FragmentExample extends JACSBaseFragment {
  - Create the public contructor to match the super
  - Id needed, overrive `init` and add setup code there
  
- ### ViewModel Example
- ```java
- public class FragmentExampleViewModel extends JACSViewModel {
+### ViewModel Example
+```java
+public class FragmentExampleViewModel extends JACSViewModel {
     
-    // Required constructor
-    public FragmentExampleViewModel(@NonNull Application application) {
-        super(application);
-    }
+   // Required constructor
+   public FragmentExampleViewModel(@NonNull Application application) {
+       super(application);
+   }
     
 }
- ```
+```
  
  
 ## Navigation
@@ -104,58 +104,54 @@ To call a Navigation action from a ViewModel that extends JACSViewModel:
  - In the recyclerView's xml bind the data (app:data="yourViewModel.data")
  - If needed add the onClickListener by calling adapter.setItemClickedListener(new JACSOnRecyclerViewItemClicked)
  
- ### RecyclerView Adapter Example
- ```java
- public class ExampleAdapter extends JACSRecyclerViewAdapter<String, ExampleCellBasic> {
+### RecyclerView Adapter Example
+```java
+public class ExampleAdapter extends JACSRecyclerViewAdapter<String, ExampleCellBasic> {
 
-    public ExampleAdapter(Context context) {
-        super(context);
-    }
+   public ExampleAdapter(Context context) {
+       super(context);
+   }
 
-    @Override
-    public void setData(List<String> data) {
-        this.items = data;
-        notifyDataSetChanged();
-    }
+   @Override
+   public void setData(List<String> data) {
+       this.items = data;
+       notifyDataSetChanged();
+   }
 
-    @NonNull
-    @Override
-    public ExampleCellBasic onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ExampleCellBasic(inflate(R.layout.cell_example, parent, false));
-    }
-
+   @NonNull
+   @Override
+   public ExampleCellBasic onCreateViewHolder(ViewGroup parent, int viewType) {
+       return new ExampleCellBasic(inflate(R.layout.cell_example, parent, false));
+   }
 
 }
- ```
+```
  
- ### ViewHolder Example
- ```java
- public class ExampleCellBasic extends JACSViewHolder<String> {
+### ViewHolder Example
+```java
+public class ExampleCellBasic extends JACSViewHolder<String> {
 
-    public TextView textView;
+   public TextView textView;
 
-    public ExampleCellBasic(@NonNull View itemView) {
-        super(itemView);
-        textView = itemView.findViewById(R.id.textView);
-    }
+   public ExampleCellBasic(@NonNull View itemView) {
+       super(itemView);
+       textView = itemView.findViewById(R.id.textView);
+   }
     
-    @Override
-    public void onBind(final String item, @Nullable final JACSOnRecyclerViewItemClicked<String> itemClickedListener) {
-        textView.setText(item);
+   @Override
+   public void onBind(final String item, @Nullable final JACSOnRecyclerViewItemClicked<String> itemClickedListener) {
+       textView.setText(item);
 
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (itemClickedListener != null) {
-                    itemClickedListener.onItemClicked(position, item);
-                }
-            }
-        });
+       itemView.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               if (itemClickedListener != null) {
+                   itemClickedListener.onItemClicked(position, item);
+               }
+           }
+       });
 
-    }
+   }
     
 }
- ```
- 
- 
- 
+```
