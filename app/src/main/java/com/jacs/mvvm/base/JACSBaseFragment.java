@@ -24,8 +24,6 @@ public abstract class JACSBaseFragment<BindingType extends ViewDataBinding, View
 
     private View view;
     private Observer<Integer> navigationObserver;
-
-    protected String activityTitle;
     protected ViewModelType viewModel;
 
     /**
@@ -228,7 +226,7 @@ public abstract class JACSBaseFragment<BindingType extends ViewDataBinding, View
             Log.e("performNavigationAction", "No view");
         }
     }
-    // TEST
+
     /**
      * Used to push fragments using the navigation component for android and send a bundle of data to that fragment.
      * <p></p>
