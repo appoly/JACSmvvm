@@ -28,10 +28,12 @@ To call a Navigation action from a ViewModel that extends JACSViewModel:
 - Handle any logic you need first, then call 'performAction(Integer, Bundle)' passing the integer (R.id.action_firstFragment_to_secondFragment) and either a Bundle or null
 - If you passed a bundle, you can get the contents of the bundle inside the new fragment with 'getBundleData()'
 
-# Recycler Views
-To use the JACSRecyclerAdapter you will need to do the following:
-- Ensure that your recyclerView adapter extends from JACSRecyclerViewAdapter. To do this you will need to add 2 parameters into the crocodile parentheses '<>'. You will need to add the data type which the recylerView will be using, and the Cell that the recyclerView will be displaying (e.g <String, ExampleCell>).
-- To setup the cell you will need to create a class that extends from JACSViewHolder. With this you will only need to add 1 parameter into the crocodile parentheses '<>' which is the data type for the recyclerViews data, in this case it would be `String`
-- You can now see that the ExampleCell class required you to override an `onBind` method, use this to set the data for the cells (e.g textView.setText(item)). 
-- You will also have had to override 2 methods for the recyclerView adapter. These are the `setData` and `onCreateViewHolder` methods. The setData method is used to dataBind the data that this recyclerView will be displaying, therefore you should set the data within the base adapter to these new items (e.g this.items = data) also any filtering of the data can be perfomed here. The onCreateViewHolder method is used for you to inflate you cell with the correct layout id (e.g ExampleCell(inflate(R.layout.cell_example, parent, false));). You can also use this method to set any custom behavour for your cell
-- Finally to tie it all together, you just attatch your adapter to your recyclerView, then bind the data to the recyclerView in xml (by using the app:data="") and, if needed, add the onClick listener by calling 'adapter.setItemClickedListener(new JACSOnRecyclerViewItemClicked'
+# Recycler Views with Data Binding
+To use the JACSRecyclerAdapter with a RecyclerView:
+- Ensure your RecyclerViewAdapter extends JACSRecyclerViewAdapter<DataType, YourViewHolder> (DataType is whatever your adapter is exptecting a list of e.g UserModel)
+- Override the 'setData' method and set the data for data binding (this.items = data)
+- Override the 'onCreateViewHolder' method to inflate your ViewHolder (e.g new YourViewHolder(inflate(R.layout.your_view_holder, parent, false))
+- Create your ViewHolder and extend it fromfrom JACSViewHolder<DataType>
+- Override the 'onBind' method and set the data for the ViewHolder (e.g textView.setText(UserModel.name)
+- In the recyclerView's xml bind the data (app:data="yourViewModel.data")
+- If needed add the onClickListener by calling adapter.setItemClickedListener(new JACSOnRecyclerViewItemClicked)
