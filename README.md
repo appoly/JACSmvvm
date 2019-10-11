@@ -56,11 +56,18 @@ public class FragmentExample extends JACSBaseFragment<FragmentExampleBinding, Fr
 
    @Override
    protected void setUpViewModel() {
+       super.setUpViewModel();
        // Binding is automatically cast to the correct type
        // viewModel is also automatically cast to the correct type
        viewBinding.setExampleViewModel(viewModel);
         
    }
+   
+   @Override
+   protected void setupViews() {
+        
+   }
+   
  }
  ```
  
