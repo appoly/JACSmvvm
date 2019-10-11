@@ -11,7 +11,7 @@ dependencies {
 
  
 ## Adding New Fragments
-When you add a new fragment to the project, have it extend JACSFragment or create your own BaseFragment that extends JACSFragment and have your new fragment extend your BaseFragment. 
+When you add a new fragment to the project, have it extend JACSBaseFragment or create your own BaseFragment that extends JACSBaseFragment and have your new fragment extend your BaseFragment. 
 In the onCrease method:
 - Set 'layoutID' to the layout resource you want to use for the fragment
 - If you need to set up your views, override `setUpViews()` and put your view set-up code there
@@ -36,13 +36,13 @@ public class FragmentExample extends JACSBaseFragment {
 
  
 ## Enabling ViewModels and Data Binding in Fragments
- - Extend the Fragment with 'JACSFragment<FragmentNameBinding, FragmentNameViewModel>'
+ - Extend the Fragment with 'JACSBaseFragment<FragmentNameBinding, FragmentNameViewModel>'
  - Inside the onCreate method do 'viewModelClass = FragmentNameViewModel.class'
  - Override the method `setUpViewModel`
  - Inside this method do 'viewBinding.setDataBindingNameViewModel(viewModel)'
  - If needed, override `init` and add setup code there
 
- The JACSFragment will handle creating the ViewModel of the given class and set up the data binding for your view. You will now be able to access your ViewModel with the variable 'viewModel'.
+ The JACSBaseFragment will handle creating the ViewModel of the given class and set up the data binding for your view. You will now be able to access your ViewModel with the variable 'viewModel'.
  
 ### Fragment With ViewModel Example
 ```java
