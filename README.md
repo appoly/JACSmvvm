@@ -12,9 +12,9 @@ dependencies {
 ## Included Animations 
 Within this library are 6 animations. These are sliding and fading animations which can be seen below:
 ### Sliding 
-![SlidingAnimations](JACSmvvm/app/src/main/res/raw/sliding_anim_video.mov)
+![SlidingAnimations](https://github.com/appoly/JACSmvvm/blob/master/app/src/main/res/raw/sliding_anim_video.mov)
 ### Fading
-![FadingAnimations](JACSmvvm/app/src/main/res/raw/fade_anim_video.mov)
+![FadingAnimations](https://github.com/appoly/JACSmvvm/blob/master/app/src/main/res/raw/fade_anim_video.mov)
 
 ## Adding New Fragments
 When you add a new fragment to the project, have it extend JACSBaseFragment or create your own BaseFragment that extends JACSBaseFragment and have your new fragment extend your BaseFragment. 
