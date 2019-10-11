@@ -5,7 +5,7 @@ A library providing a base Fragment, ViewModel and various tools to make creatin
 To add this library to your project, add the following to your gradle file:
 ```java
 dependencies {
-    implementation 'com.github.appoly:JACSmvvm:v0.2.0'
+    implementation 'com.github.appoly:JACSmvvm:v0.2.3'
 }
 ```
 
