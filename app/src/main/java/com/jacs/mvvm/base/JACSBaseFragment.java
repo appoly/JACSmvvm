@@ -57,7 +57,7 @@ public abstract class JACSBaseFragment<BindingType extends ViewDataBinding, View
      * <p></p>
      * This should be set in the OnCreate method of a fragment
      */
-    protected boolean isOverridingOnbackPressed = true;
+    protected boolean isOverridingOnBackPressed = true;
 
 
 
@@ -69,30 +69,28 @@ public abstract class JACSBaseFragment<BindingType extends ViewDataBinding, View
             viewModel = ViewModelProviders.of(this).get(viewModelClass);
         }
 
-        setUpOnbackPressed();
+        setUpOnBackPressed();
 
         if (isKeepingView) {
             if (view == null) {
                 view = inflater.inflate(layoutID, container, false);
                 viewBinding = DataBindingUtil.bind(view);
                 viewBinding.setLifecycleOwner(this);
-                setupViews();
+                setUpViews();
             }
             return view;
         }
 
         view = inflater.inflate(layoutID, container, false);
-        setupViews();
         if (viewModel != null){
             setUpDataBinding(view);
         }
+        setUpViews();
         return view;
     }
 
-
-
-    private void setUpOnbackPressed() {
-        requireActivity().getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(isOverridingOnbackPressed) {
+    private void setUpOnBackPressed() {
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(isOverridingOnBackPressed) {
             @Override
             public void handleOnBackPressed() {
                 NavController navController = Navigation.findNavController(getView());
@@ -137,7 +135,7 @@ public abstract class JACSBaseFragment<BindingType extends ViewDataBinding, View
      * <p></p>
      * Every fragment must override this method in order to setup it's view components
      */
-    protected void setupViews() {}
+    protected void setUpViews() {}
 
 
     /**
