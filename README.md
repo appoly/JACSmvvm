@@ -12,14 +12,14 @@ In the onCrease method:
 - Inside the onCreate method do 'viewModelClass = FragmentNameViewModel.class'
 - Override the method `setUpViewModel`
 - Inside this method do 'viewBinding.setDataBindingNameViewModel(viewModel)'
-- If needed, override `init()` and add setup code there
+- If needed, override `init` and add setup code there
  
 The JACSFragment will handle creating the ViewModel of the given class and set up the data binding for your view. You will now be able to access your ViewModel with the variable 'viewModel'.
  
 ## Creating A ViewModel
 - Extend the class with JACSViewModel or create your own BaseViewModel that extends JACSViewModel and extend new ViewModels by BaseViewModel
 - Create the public contructor to match the super
-- Id needed, overrive `init()` and add setup code there
+- Id needed, overrive `init` and add setup code there
  
 ## Navigation
 To call a Navigation action from a ViewModel that extends JACSViewModel:
