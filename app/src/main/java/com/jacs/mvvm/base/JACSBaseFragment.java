@@ -76,7 +76,7 @@ public abstract class JACSBaseFragment<BindingType extends ViewDataBinding, View
                 view = inflater.inflate(layoutID, container, false);
                 viewBinding = DataBindingUtil.bind(view);
                 viewBinding.setLifecycleOwner(this);
-                setUpViews(view);
+                setUpViews();
             }
             return view;
         }
@@ -85,7 +85,7 @@ public abstract class JACSBaseFragment<BindingType extends ViewDataBinding, View
         if (viewModel != null){
             setUpDataBinding(view);
         }
-        setUpViews(view);
+        setUpViews();
         return view;
     }
 
@@ -135,7 +135,7 @@ public abstract class JACSBaseFragment<BindingType extends ViewDataBinding, View
      * <p></p>
      * Every fragment must override this method in order to setup it's view components
      */
-    protected void setUpViews(View view) {}
+    protected void setUpViews() {}
 
 
     /**
