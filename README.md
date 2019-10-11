@@ -9,7 +9,6 @@ dependencies {
 }
 ```
 
- 
 ## Adding New Fragments
 When you add a new fragment to the project, have it extend JACSBaseFragment or create your own BaseFragment that extends JACSBaseFragment and have your new fragment extend your BaseFragment. 
 In the onCrease method:
@@ -33,8 +32,6 @@ public class FragmentExample extends JACSBaseFragment {
 }
 ```
 
-
- 
 ## Enabling ViewModels and Data Binding in Fragments
  - Extend the Fragment with 'JACSBaseFragment<FragmentNameBinding, FragmentNameViewModel>'
  - Inside the onCreate method do 'viewModelClass = FragmentNameViewModel.class'
@@ -53,12 +50,12 @@ public class FragmentExample extends JACSBaseFragment<FragmentExampleBinding, Fr
        super.onCreate(savedInstanceState);
        layoutID = R.layout.example_layout;
         
-       // Must set the class for this views ViewModel
+       // Must set the class for this view's ViewModel
        viewModelClass = FragmentExampleViewModel.class;
    }
 
    @Override
-   protected void setupViews() {
+   protected void setUpViewModel() {
        // Binding is automatically cast to the correct type
        // viewModel is also automatically cast to the correct type
        viewBinding.setExampleViewModel(viewModel);
@@ -66,7 +63,6 @@ public class FragmentExample extends JACSBaseFragment<FragmentExampleBinding, Fr
    }
  }
  ```
- 
  
 ## Creating A ViewModel
  - Extend the class with JACSViewModel or create your own BaseViewModel that extends JACSViewModel and extend new ViewModels by BaseViewModel
@@ -85,14 +81,12 @@ public class FragmentExampleViewModel extends JACSViewModel {
 }
 ```
  
- 
 ## Navigation
 To call a Navigation action from a ViewModel that extends JACSViewModel:
 - Ensure the fragment that's using the ViewModel extend JACSFragment
 - Inside the ViewModel create a function for navigation (e.g public void goToSecondFragment())
 - Handle any logic you need first, then call `performAction(Integer, Bundle)` passing the integer (R.id.action_firstFragment_to_secondFragment) and either a Bundle or null
 - If you passed a bundle, you can get the contents of the bundle inside the new fragment with `getBundleData()`
-
 
 ## Recycler Views with Data Binding
  To use the JACSRecyclerAdapter with a RecyclerView:
