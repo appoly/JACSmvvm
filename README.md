@@ -31,9 +31,9 @@ To call a Navigation action from a ViewModel that extends JACSViewModel:
 # Recycler Views with Data Binding
 To use the JACSRecyclerAdapter with a RecyclerView:
 - Ensure your RecyclerViewAdapter extends JACSRecyclerViewAdapter<DataType, YourViewHolder> (DataType is whatever your adapter is exptecting a list of e.g UserModel)
-- Override the 'setData' method and set the data for data binding (this.items = data)
-- Override the 'onCreateViewHolder' method to inflate your ViewHolder (e.g new YourViewHolder(inflate(R.layout.your_view_holder, parent, false))
+- Override the `setData` method and set the data for data binding (this.items = data)
+- Override the `onCreateViewHolder` method to inflate your ViewHolder (e.g new YourViewHolder(inflate(R.layout.your_view_holder, parent, false))
 - Create your ViewHolder and extend it fromfrom JACSViewHolder<DataType>
-- Override the 'onBind' method and set the data for the ViewHolder (e.g textView.setText(UserModel.name)
+- Override the `onBind` method and set the data for the ViewHolder (e.g textView.setText(UserModel.name)
 - In the recyclerView's xml bind the data (app:data="yourViewModel.data")
 - If needed add the onClickListener by calling adapter.setItemClickedListener(new JACSOnRecyclerViewItemClicked)
