@@ -9,6 +9,12 @@ dependencies {
 }
 ```
 
+## Included Animations 
+Within this library are 6 animations. These are sliding and fading animations which can be seen below:
+### Sliding 
+
+### Fading
+
 ## Adding New Fragments
 When you add a new fragment to the project, have it extend JACSBaseFragment or create your own BaseFragment that extends JACSBaseFragment and have your new fragment extend your BaseFragment. 
 In the onCreate method:
@@ -165,3 +171,4 @@ public class ExampleCellBasic extends JACSViewHolder<String> {
    }
     
 }
+```
