@@ -64,9 +64,9 @@ public abstract class JACSRecyclerViewAdapterAdvanced<T, L, VH extends JACSViewH
     }
 
     /**
-     * Returns the total number of items in the data set held by the adapter.
+     * Returns the total number of mData in the data set held by the adapter.
      *
-     * @return The total number of items in this adapter.
+     * @return The total number of mData in this adapter.
      */
     @Override
     public int getItemCount() {
@@ -74,10 +74,10 @@ public abstract class JACSRecyclerViewAdapterAdvanced<T, L, VH extends JACSViewH
     }
 
     /**
-     * Sets items to the adapter and notifies that data set has been changed.
+     * Sets mData to the adapter and notifies that data set has been changed.
      *
-     * @param items items to set to the adapter
-     * @throws IllegalArgumentException in case of setting `null` items
+     * @param items mData to set to the adapter
+     * @throws IllegalArgumentException in case of setting `null` mData
      */
     public void setItems(List<T> items) {
         if (items == null) {
@@ -89,18 +89,18 @@ public abstract class JACSRecyclerViewAdapterAdvanced<T, L, VH extends JACSViewH
     }
 
     /**
-     * Returns all items from the data set held by the adapter.
+     * Returns all mData from the data set held by the adapter.
      *
-     * @return All of items in this adapter.
+     * @return All of mData in this adapter.
      */
     public List<T> getItems() {
         return items;
     }
 
     /**
-     * Returns an items from the data set at a certain position.
+     * Returns an mData from the data set at a certain position.
      *
-     * @return All of items in this adapter.
+     * @return All of mData in this adapter.
      */
     public T getItem(int position) {
         return items.get(position);
@@ -121,21 +121,21 @@ public abstract class JACSRecyclerViewAdapterAdvanced<T, L, VH extends JACSViewH
     }
 
     /**
-     * Adds list of items to the end of the adapter's data set.
+     * Adds list of mData to the end of the adapter's data set.
      * Notifies that item has been inserted.
      *
-     * @param items items which has to be added to the adapter.
+     * @param items mData which has to be added to the adapter.
      */
     public void addAll(List<T> items) {
         if (items == null) {
-            throw new IllegalArgumentException("Cannot add `null` items to the Recycler adapter");
+            throw new IllegalArgumentException("Cannot add `null` mData to the Recycler adapter");
         }
         this.items.addAll(items);
         notifyItemRangeInserted(this.items.size() - items.size(), items.size());
     }
 
     /**
-     * Clears all the items in the adapter.
+     * Clears all the mData in the adapter.
      */
     public void clearData() {
         items.clear();

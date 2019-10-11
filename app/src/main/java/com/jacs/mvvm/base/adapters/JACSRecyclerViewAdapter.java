@@ -18,7 +18,7 @@ import java.util.List;
 
 public abstract class JACSRecyclerViewAdapter<T, VH extends JACSViewHolder<T>> extends RecyclerView.Adapter<VH> implements JACSBindableAdapter<T> {
 
-    protected List<T> items;
+    protected List<T> mData;
     private JACSOnRecyclerViewItemClicked<T> listener;
     private LayoutInflater layoutInflater;
 
@@ -33,7 +33,7 @@ public abstract class JACSRecyclerViewAdapter<T, VH extends JACSViewHolder<T>> e
      */
     public JACSRecyclerViewAdapter(Context context) {
         layoutInflater = LayoutInflater.from(context);
-        items = new ArrayList<>();
+        mData = new ArrayList<>();
     }
 
     /**
@@ -58,52 +58,52 @@ public abstract class JACSRecyclerViewAdapter<T, VH extends JACSViewHolder<T>> e
      */
     @Override
     public void onBindViewHolder(VH holder, int position) {
-        T item = items.get(position);
+        T item = mData.get(position);
         holder.position = position;
         holder.onBind(item, listener);
     }
 
     /**
-     * Returns the total number of items in the data set held by the adapter.
+     * Returns the total number of mData in the data set held by the adapter.
      *
-     * @return The total number of items in this adapter.
+     * @return The total number of mData in this adapter.
      */
     @Override
     public int getItemCount() {
-        return items != null ? items.size() : 0;
+        return mData != null ? mData.size() : 0;
     }
 
     /**
-     * Sets items to the adapter and notifies that data set has been changed.
+     * Sets mData to the adapter and notifies that data set has been changed.
      *
-     * @param items items to set to the adapter
-     * @throws IllegalArgumentException in case of setting `null` items
+     * @param mData mData to set to the adapter
+     * @throws IllegalArgumentException in case of setting `null` mData
      */
-    public void setItems(List<T> items) {
-        if (items == null) {
+    public void setmData(List<T> mData) {
+        if (mData == null) {
             throw new IllegalArgumentException("Cannot set `null` item to the Recycler adapter");
         }
-        this.items.clear();
-        this.items.addAll(items);
+        this.mData.clear();
+        this.mData.addAll(mData);
         notifyDataSetChanged();
     }
 
     /**
-     * Returns all items from the data set held by the adapter.
+     * Returns all mData from the data set held by the adapter.
      *
-     * @return All of items in this adapter.
+     * @return All of mData in this adapter.
      */
-    public List<T> getItems() {
-        return items;
+    public List<T> getmData() {
+        return mData;
     }
 
     /**
-     * Returns an items from the data set at a certain position.
+     * Returns an mData from the data set at a certain position.
      *
-     * @return All of items in this adapter.
+     * @return All of mData in this adapter.
      */
     public T getItem(int position) {
-        return items.get(position);
+        return mData.get(position);
     }
 
     /**
@@ -116,29 +116,29 @@ public abstract class JACSRecyclerViewAdapter<T, VH extends JACSViewHolder<T>> e
         if (item == null) {
             throw new IllegalArgumentException("Cannot add null item to the Recycler adapter");
         }
-        items.add(item);
-        notifyItemInserted(items.size() - 1);
+        mData.add(item);
+        notifyItemInserted(mData.size() - 1);
     }
 
     /**
-     * Adds list of items to the end of the adapter's data set.
+     * Adds list of mData to the end of the adapter's data set.
      * Notifies that item has been inserted.
      *
-     * @param items items which has to be added to the adapter.
+     * @param items mData which has to be added to the adapter.
      */
     public void addAll(List<T> items) {
         if (items == null) {
-            throw new IllegalArgumentException("Cannot add `null` items to the Recycler adapter");
+            throw new IllegalArgumentException("Cannot add `null` mData to the Recycler adapter");
         }
-        this.items.addAll(items);
-        notifyItemRangeInserted(this.items.size() - items.size(), items.size());
+        this.mData.addAll(items);
+        notifyItemRangeInserted(this.mData.size() - items.size(), items.size());
     }
 
     /**
-     * Clears all the items in the adapter.
+     * Clears all the mData in the adapter.
      */
     public void clearData() {
-        items.clear();
+        mData.clear();
         notifyDataSetChanged();
     }
 
@@ -149,9 +149,9 @@ public abstract class JACSRecyclerViewAdapter<T, VH extends JACSViewHolder<T>> e
      * @param item to be removed
      */
     public void removeItem(T item) {
-        int position = items.indexOf(item);
+        int position = mData.indexOf(item);
         if (position > -1) {
-            items.remove(position);
+            mData.remove(position);
             notifyItemRemoved(position);
         }
     }
@@ -169,7 +169,7 @@ public abstract class JACSRecyclerViewAdapter<T, VH extends JACSViewHolder<T>> e
      * Indicates whether each item in the data set can be represented with a unique identifier
      * of type {@link Long}.
      *
-     * @param hasStableIds Whether items in data set have unique identifiers or not.
+     * @param hasStableIds Whether mData in data set have unique identifiers or not.
      * @see #hasStableIds()
      * @see #getItemId(int)
      */
